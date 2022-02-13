@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const db = require("./queries");
-const port = 3000;
+const port = 3001;
 
 app.use(bodyParser.json());
 
@@ -23,6 +23,11 @@ app.get("/", (request, response) => {
 
 app.get("/countries", db.getCountries);
 app.get("/countries/:id", db.getCountryById);
+app.post("/user", db.createUser);
+app.post("/createCategory/:id", db.createCategory);
+app.get("/getCategory/:id", db.getCategoryById);
+app.get("/getAllBlogs", db.getAllBlog);
+app.post("/createblog/:id", db.createBlog);
 app.post("/countries", db.createCountry);
 app.put("/countries/:id", db.updateCountry);
 app.delete("/countries/:id", db.deleteCountry);
